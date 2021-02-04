@@ -1,0 +1,201 @@
+/* Implementa os container */
+.wrapper{
+    margin-left: auto;
+    margin-right: auto;   
+    margin-top: 30px;
+}
+
+
+.container{
+    box-flex: 1;
+    -webkit-flex-grow: 1;
+    flex-grow: 1;
+    overflow: hidden;
+    padding: 24px 24px;
+    margin-left: auto;
+    margin-right: auto;
+    -webkit-border-radius: 8px;
+    border-radius: 8px;
+    border: 1px solid #dadce0;
+    display: block;
+    -webkit-flex-shrink: 0;
+    flex-shrink: 0;
+    margin: 0 auto;
+    min-height: 0;
+    -webkit-transition: .2s;
+    transition: .2s;
+    width: 400px;
+    height: 450px;
+}
+
+
+.logo{
+    padding-top: 30px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.signin{
+    color: #202124;
+    padding-bottom: 0;
+    padding-top: 16px;
+    font-family: 'Google Sans','Noto Sans Myanmar UI',arial,sans-serif;
+    font-size: 24px;
+    font-weight: 400;
+    line-height: 1.3333;
+    margin-bottom: 0;
+    margin-top: 0;
+    text-align: center;
+}
+
+.useYourGoogleAccount{
+color: #202124;
+font-size: 16px;
+font-weight: 400;
+letter-spacing: .1px;
+line-height: 1.5;
+padding-bottom: 0;
+padding-top: 8px;
+text-align: center;
+}
+
+
+
+/* Input e Box fazem o CSS do Input Text */
+.input{
+    -webkit-border-radius: 4px;
+    border-radius: 4px;
+    color: #202124;
+    font-size: 16px;
+    height: 28px;
+    margin: 1px 1px 0 1px;
+    padding: 13px 15px;
+    z-index: 1;
+    width: 100%;
+}
+
+.box{
+    padding-top:24px;
+    display: inline-block;
+    outline: none;
+    padding-bottom: 8px;
+    width: 360px;
+  }
+
+.forgotEmail{
+    color: #1a73e8;
+    font-size: 14px;
+    margin-top: 0px;
+}
+
+/*Seção com texto de informação sobre segurança */
+.securityLearnMoreSection{
+    padding-bottom: 3px;
+    padding-top: 9px;
+}
+
+.titleSecurity{
+    color: #5f6368;
+    font-size: 14px;
+    line-height: 1.4286;
+    margin-top: 32px;
+    padding-left: 15px;
+}
+
+.linkLearnMore{
+    color: #1a73e8;
+    font-size: 14px;
+    margin-top: 0px;
+}
+
+
+/* Criação de conta e prosseguir com o login */
+.createAccountButton{
+    color: #1a73e8;
+    line-height: 1.4286;
+    margin: 8px;
+    padding-left: 0%;
+    text-transform: none;
+}
+
+.createAccountButtonActive{
+    background-color:#1B3E70;
+    color:white;
+}
+
+
+.createAccountandSignInSection{
+    -webkit-align-items: flex-start;
+    align-items: flex-start;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-flex: 0;
+    box-flex: 0;
+    -webkit-flex-grow: 0;
+    flex-grow: 0;
+    -webkit-flex-wrap: wrap;
+    flex-wrap: wrap;
+    -webkit-justify-content: space-between;
+    justify-content: space-between;
+    margin-left: -8px;
+    margin-top: 26px;
+    min-height: 48px;
+    padding-bottom: 20px;
+    padding: 24px 24px 36px;
+}
+
+
+
+/* Implementam o Footer */
+.footer{
+    width: 450px;
+    box-flex: 1;
+    -webkit-flex-grow: 1;
+    flex-grow: 1;
+    overflow: hidden;
+   
+    margin-left: auto;
+    margin-right: auto;
+
+}
+
+   
+.button{
+    background-color: #1a73e8;
+    background-color: var(--gm-fillbutton-container-color,#1a73e8);
+    color: #fff;
+    color: var(--gm-fillbutton-ink-color,#fff);
+    padding: 0 16px 0 16px;
+    width: 80px;
+    
+}
+
+.buttonFooter{
+    -webkit-border-radius: 2px;
+    border-radius: 2px;
+    color: #757575;
+    display: inline-block;
+    margin-top: 4px;
+    padding-right: 0;
+    font-size: 12px;
+
+}
+
+.buttonFooterDiv{
+    float: right;
+}
+
+
+.select{
+    color: #444;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 12px;
+    font-weight: 500;
+}
+
+::ng-deep .mat-form-field-underline {
+    display: none;
+}

@@ -1,0 +1,67 @@
+<div class="container">
+    <button mat-icon-button aria-label="Example icon button with a menu icon">
+        <mat-icon class="options" (click)="drawer.toggle()">menu</mat-icon><img alt="xxx" src="assets/logo-gmail.png">
+    </button>
+
+    <mat-form-field class="box" appearance="fill">
+        <mat-label>Pesquisar e-mail</mat-label>
+        <input matInput>
+
+    </mat-form-field>
+
+</div>
+<div class="wrapper">
+
+    <mat-drawer-container class="sideBarContainer">
+        <mat-drawer #drawer class="drawer" [mode]="mode.value">
+
+            <button class="buttonCreate" mat-raised-button>Escrever</button>
+
+            <div class="button-menu">
+            <a mat-button class="button-row" target="_blank">
+                <mat-icon class="icon" aria-hidden="false">inbox</mat-icon>
+                Caixa de Entrada
+            </a>
+            <a mat-button class="button-row" target="_blank">
+                <mat-icon class="icon" aria-hidden="false">star</mat-icon>Com estrela
+            </a>
+            <a mat-button class="button-row" target="_blank">
+                <mat-icon class="icon" aria-hidden="false">watch_later_black</mat-icon>Adiados
+            </a>
+            <a mat-button class="button-row" target="_blank">
+                <mat-icon class="icon" aria-hidden="false">label_important</mat-icon>Importante
+            </a>
+            <a mat-button class="button-row" target="_blank">
+                <mat-icon class="icon" aria-hidden="false">duo</mat-icon>Chat
+            </a>
+            <a mat-button class="button-row" target="_blank">
+                <mat-icon class="icon" aria-hidden="false">send_black</mat-icon>Enviados
+            </a>
+            <a mat-button class="button-row" target="_blank">
+                <mat-icon class="icon" aria-hidden="false">insert_drive_file_black</mat-icon>Enviados
+            </a>
+
+        </div>
+
+        </mat-drawer>
+
+        <mat-drawer-content class="drawerContent">
+            <div class="divCheckBox">
+                <mat-checkbox class="checkbox"></mat-checkbox>
+            </div>
+            <mat-divider></mat-divider>
+
+
+
+
+            <mat-select #mode value="side">
+            </mat-select>
+        </mat-drawer-content>
+    </mat-drawer-container>
+
+
+    <div class="sideChat">
+        <!-- dsadas
+        <mat-divider></mat-divider> -->
+    </div>
+</div>
