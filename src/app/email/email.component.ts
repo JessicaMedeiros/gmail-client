@@ -1,34 +1,39 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from "@angular/router";
+import { FormGroup, FormBuilder, Validators} from '@angular/forms';
 import { Email } from "../email/email";
 import { UsersService } from '../users.service';
 import { EmailsService } from '../emails.service';
-import { Router } from "@angular/router";
-import { FormGroup, FormBuilder, Validators} from '@angular/forms';
 
 @Component({
-  selector: 'app-home',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css']
+  selector: 'app-email',
+  templateUrl: './email.component.html',
+  styleUrls: ['./email.component.css']
 })
-export class HomeComponent implements OnInit {
+export class EmailComponent implements OnInit {
+
   emails: Email[] = [];
 
   formularioEmail!: FormGroup;
   colunas = ['title', 'content', 'date'];
+
   constructor(
     private service:EmailsService,
     private fb:FormBuilder,
-    private router:Router
+    private router:Router,
   ) { }
 
   ngOnInit(): void {
+    
     this.formularioEmail = this.fb.group({
       content: ['', Validators.required],
       title: ['', Validators.required],
       idUser: ['', Validators.required]
     })
+
     this.listarEmails();
   }
+
   listarEmails(){
     this.service.list().subscribe(response => {
       this.emails = response;
@@ -46,5 +51,4 @@ export class HomeComponent implements OnInit {
       }
     )
   }
-
 }

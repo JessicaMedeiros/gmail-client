@@ -1,0 +1,17 @@
+.button{
+    background-color: #1a73e8;
+    background-color: var(--gm-fillbutton-container-color,#1a73e8);
+    color: #fff;
+    color: var(--gm-fillbutton-ink-color,#fff);
+    padding: 0 16px 0 16px;
+    width: 80px;
+    
+}
+
+.box{
+    padding-top:24px;
+    display: inline-block;
+    outline: none;
+    padding-bottom: 8px;
+    width: 360px;
+}

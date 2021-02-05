@@ -23,16 +23,34 @@
         <input formControlName="senha" matInput placeholder="passwprd">
         <!-- <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error> -->
       </mat-form-field>
-      <button mat-raised-button color="primary">
-        <mat-icon>favorite</mat-icon> Salvar
-      </button>
+      <div class="createAccountandSignInSection">
+     
+        <button mat-button class="createAccountButton" routerLinkActive="createAccountButtonActive" [matMenuTriggerFor]="menu">Create account</button>
+        <mat-menu #menu="matMenu">
+          <button mat-menu-item>For myself</button>
+          <button mat-menu-item>To manage my business</button>
+        </mat-menu>
+  
+        <button mat-stroked-button class="button">Next</button>
+      </div>
 </form>
   </div>
 
   <div class="footer">
-    <div class="buttonFooterDiv">
-      
+    <!-- <mat-form-field class="select">
+      <mat-label>Choose a country</mat-label>
+      <mat-select name="countries" class="select">
+        <mat-option *ngFor="let language of languages" [value]="language.id">
+          {{language.name}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field> -->
+
+    <div class="buttonFooterDiv"> 
+      <a mat-flat-button class="buttonFooter" href="https://www.google.com/" target="_blank">Help</a>
+      <a mat-flat-button class="buttonFooter" href="https://www.google.com/" target="_blank">Privacy</a>
+      <a mat-flat-button class="buttonFooter" href="https://www.google.com/" target="_blank">Terms</a>
     </div>
-    
+
   </div>
 </div>

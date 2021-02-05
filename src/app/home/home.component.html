@@ -3,8 +3,9 @@
         <mat-icon class="options" (click)="drawer.toggle()">menu</mat-icon><img alt="xxx" src="assets/logo-gmail.png">
     </button>
 
-    <mat-form-field class="box" appearance="fill">
-        <mat-label>Pesquisar e-mail</mat-label>
+    <mat-form-field class="box">
+        <mat-icon class="inputIcon" aria-hidden="false">search</mat-icon>
+        <mat-label class="input">Pesquisar e-mail</mat-label>
         <input matInput>
 
     </mat-form-field>
@@ -13,46 +14,86 @@
 <div class="wrapper">
 
     <mat-drawer-container class="sideBarContainer">
-        <mat-drawer #drawer class="drawer" [mode]="mode.value">
+        <mat-drawer #drawer [mode]="mode.value">
 
-            <button class="buttonCreate" mat-raised-button>Escrever</button>
+            <button class="buttonCreate" routerLink="/email" mat-raised-button>Escrever</button>
 
             <div class="button-menu">
-            <a mat-button class="button-row" target="_blank">
-                <mat-icon class="icon" aria-hidden="false">inbox</mat-icon>
-                Caixa de Entrada
-            </a>
-            <a mat-button class="button-row" target="_blank">
-                <mat-icon class="icon" aria-hidden="false">star</mat-icon>Com estrela
-            </a>
-            <a mat-button class="button-row" target="_blank">
-                <mat-icon class="icon" aria-hidden="false">watch_later_black</mat-icon>Adiados
-            </a>
-            <a mat-button class="button-row" target="_blank">
-                <mat-icon class="icon" aria-hidden="false">label_important</mat-icon>Importante
-            </a>
-            <a mat-button class="button-row" target="_blank">
-                <mat-icon class="icon" aria-hidden="false">duo</mat-icon>Chat
-            </a>
-            <a mat-button class="button-row" target="_blank">
-                <mat-icon class="icon" aria-hidden="false">send_black</mat-icon>Enviados
-            </a>
-            <a mat-button class="button-row" target="_blank">
-                <mat-icon class="icon" aria-hidden="false">insert_drive_file_black</mat-icon>Enviados
-            </a>
+                <a mat-button class="button-row" target="_blank">
+                    <mat-icon class="icon" aria-hidden="false">inbox</mat-icon>
+                    Caixa de Entrada
+                </a>
+                <a mat-button class="button-row" target="_blank">
+                    <mat-icon class="icon" aria-hidden="false">star</mat-icon>Com estrela
+                </a>
+                <a mat-button class="button-row" target="_blank">
+                    <mat-icon class="icon" aria-hidden="false">watch_later_black</mat-icon>Adiados
+                </a>
+                <a mat-button class="button-row" target="_blank">
+                    <mat-icon class="icon" aria-hidden="false">label_important</mat-icon>Importante
+                </a>
+                <a mat-button class="button-row" target="_blank">
+                    <mat-icon class="icon" aria-hidden="false">duo</mat-icon>Chat
+                </a>
+                <a mat-button class="button-row" target="_blank">
+                    <mat-icon class="icon" aria-hidden="false">send_black</mat-icon>Enviados
+                </a>
+                <a mat-button class="button-row" target="_blank">
+                    <mat-icon class="icon" aria-hidden="false">insert_drive_file_black</mat-icon>Enviados
+                </a>
 
-        </div>
+            </div>
 
         </mat-drawer>
 
         <mat-drawer-content class="drawerContent">
             <div class="divCheckBox">
                 <mat-checkbox class="checkbox"></mat-checkbox>
+                <div class="divSplitKeyboard">
+                    <mat-icon class="divSplit" aria-hidden="false">vertical_split_black</mat-icon>
+                    <mat-icon class="keyboard" aria-hidden="false">keyboard</mat-icon>
+                </div>
             </div>
+
+
+
             <mat-divider></mat-divider>
+     
+            
+            <table mat-table [dataSource]="emails" class="full-width">
 
+                <!--- Note that these columns can be defined in any order.
+                          The actual rendered columns are set as a property on the row definition" -->
 
+                <!-- Position Column -->
+                <ng-container matColumnDef="title">
+                    <th mat-header-cell *matHeaderCellDef> Title </th>
+                    <td mat-cell *matCellDef="let email"> {{email.title}} </td>
+                </ng-container>
 
+                <!-- Name Column -->
+                <ng-container matColumnDef="content">
+                    <th mat-header-cell *matHeaderCellDef> Content </th>
+                    <td mat-cell *matCellDef="let email"> {{email.content}} </td>
+                </ng-container>
+
+                <!-- Weight Column -->
+                <ng-container matColumnDef="date">
+                    <th mat-header-cell *matHeaderCellDef> Data </th>
+                    <td mat-cell *matCellDef="let email"> {{email.date}} </td>
+                </ng-container>
+
+                <!-- Symbol Column -->
+                <!-- <ng-container matColumnDef="symbol">
+                      <th mat-header-cell *matHeaderCellDef> Symbol </th>
+                      <td mat-cell *matCellDef="let element"> {{element.symbol}} </td>
+                    </ng-container> -->
+
+                <tr mat-header-row *matHeaderRowDef="colunas"></tr>
+                <tr mat-row *matRowDef="let row; columns: colunas;"></tr>
+            </table>
+
+            
 
             <mat-select #mode value="side">
             </mat-select>

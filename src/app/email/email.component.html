@@ -1,0 +1,53 @@
+<p>email works!</p>
+
+<form [formGroup]="formularioEmail" (ngSubmit)="submit()">
+
+    <mat-form-field class="box" appearance="fill">
+        <mat-label>Titulo</mat-label>
+        <input formControlName="title" matInput>
+    </mat-form-field>
+    <mat-form-field class="box" appearance="fill">
+        <mat-label>Content</mat-label>
+        <input formControlName="content" matInput>
+    </mat-form-field>
+
+    <mat-form-field class="box" appearance="fill">
+        <mat-label>idUser</mat-label>
+        <input formControlName="idUser" matInput>
+    </mat-form-field>
+
+    <button mat-stroked-button class="button">Enviar</button>
+</form>
+
+<table mat-table [dataSource]="emails" class="table">
+
+    <!--- Note that these columns can be defined in any order.
+          The actual rendered columns are set as a property on the row definition" -->
+  
+    <!-- Position Column -->
+    <ng-container matColumnDef="title">
+      <th mat-header-cell *matHeaderCellDef> Title </th>
+      <td mat-cell *matCellDef="let email"> {{email.title}} </td>
+    </ng-container>
+  
+    <!-- Name Column -->
+    <ng-container matColumnDef="content">
+      <th mat-header-cell *matHeaderCellDef> Content </th>
+      <td mat-cell *matCellDef="let email"> {{email.content}} </td>
+    </ng-container>
+  
+    <!-- Weight Column -->
+    <ng-container matColumnDef="date">
+      <th mat-header-cell *matHeaderCellDef> Data </th>
+      <td mat-cell *matCellDef="let email"> {{email.date}} </td>
+    </ng-container>
+  
+    <!-- Symbol Column -->
+    <!-- <ng-container matColumnDef="symbol">
+      <th mat-header-cell *matHeaderCellDef> Symbol </th>
+      <td mat-cell *matCellDef="let element"> {{element.symbol}} </td>
+    </ng-container> -->
+  
+    <tr mat-header-row *matHeaderRowDef="colunas"></tr>
+    <tr mat-row *matRowDef="let row; columns: colunas;"></tr>
+  </table>

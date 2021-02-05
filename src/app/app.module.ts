@@ -17,6 +17,9 @@ import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatDividerModule} from '@angular/material/divider';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatListModule} from '@angular/material/list';
+import {MatRippleModule} from '@angular/material/core';
+import {MatDialogModule} from '@angular/material/dialog';
+import {MatTableModule} from '@angular/material/table';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -24,11 +27,12 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { UserFormComponent } from './user/user-form/user-form.component';
 import { UsersService } from "./users.service";
 import { HomeComponent } from './home/home.component';
+import { EmailComponent } from './email/email.component';
 
 @NgModule({
   declarations: [
     AppComponent, 
-    UserFormComponent, HomeComponent
+    UserFormComponent, HomeComponent, EmailComponent
   ],
   imports: [
     BrowserModule,
@@ -47,7 +51,10 @@ import { HomeComponent } from './home/home.component';
     MatSidenavModule,
     MatDividerModule,
     MatCheckboxModule,
-    MatListModule
+    MatListModule,
+    MatRippleModule,
+    MatDialogModule,
+    MatTableModule
   ],
    exports:[
     MatFormFieldModule,
@@ -61,7 +68,10 @@ import { HomeComponent } from './home/home.component';
     MatSidenavModule,
     MatDividerModule,
     MatCheckboxModule,
-    MatListModule
+    MatListModule,
+    MatRippleModule,
+    MatDialogModule,
+    MatTableModule
   ],
   providers: [
     UsersService
