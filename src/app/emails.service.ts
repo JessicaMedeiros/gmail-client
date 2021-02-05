@@ -21,4 +21,8 @@ export class EmailsService {
   list(): Observable<Email[]>{
     return this.http.get<any>(this.url);
   }
+
+  makeFavorite(email : Email) : Observable<any>{
+    return this.http.patch(`${this.url}/${email.id}/favorite`, null);
+  }
 }

@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { Router } from "@angular/router";
 import { FormGroup, FormBuilder, Validators} from '@angular/forms';
 import { Email } from "../email/email";
 import { UsersService } from '../users.service';
 import { EmailsService } from '../emails.service';
+import { MatDialogRef, MAT_DIALOG_DATA } from "@angular/material/dialog";
 
 @Component({
   selector: 'app-email',
@@ -21,6 +22,9 @@ export class EmailComponent implements OnInit {
     private service:EmailsService,
     private fb:FormBuilder,
     private router:Router,
+    public dialogRef: MatDialogRef<EmailComponent>,
+    @Inject(MAT_DIALOG_DATA) public email:Email
+
   ) { }
 
   ngOnInit(): void {
@@ -47,8 +51,14 @@ export class EmailComponent implements OnInit {
       response => {
         this.emails.push(email);
         console.log(this.emails);
-        this.router.navigate(['/home'])
+        this.fechar();
+        let list : Email[] = [...this.emails, response];
+        this.emails = list;
       }
     )
+  }
+
+  fechar(){
+    this.dialogRef.close();
   }
 }

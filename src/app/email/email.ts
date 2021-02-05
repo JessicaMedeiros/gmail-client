@@ -4,6 +4,7 @@ export class Email{
     content!:string;
     idUser!:number;
     isread!:boolean;
+    favorite!:boolean;
     date!:Date;
 
     constructor(content: string, title:string, idUser:number){

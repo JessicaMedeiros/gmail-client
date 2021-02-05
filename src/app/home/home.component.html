@@ -16,7 +16,7 @@
     <mat-drawer-container class="sideBarContainer">
         <mat-drawer #drawer [mode]="mode.value">
 
-            <button class="buttonCreate" routerLink="/email" mat-raised-button>Escrever</button>
+            <button class="buttonCreate" (click)="visualizarEmail()" mat-raised-button>Escrever</button>
 
             <div class="button-menu">
                 <a mat-button class="button-row" target="_blank">
@@ -60,34 +60,27 @@
             <mat-divider></mat-divider>
      
             
-            <table mat-table [dataSource]="emails" class="full-width">
-
-                <!--- Note that these columns can be defined in any order.
-                          The actual rendered columns are set as a property on the row definition" -->
-
-                <!-- Position Column -->
+            <table mat-table [dataSource]="emails">
                 <ng-container matColumnDef="title">
-                    <th mat-header-cell *matHeaderCellDef> Title </th>
+                    <th mat-header-cell *matHeaderCellDef>  </th>
                     <td mat-cell *matCellDef="let email"> {{email.title}} </td>
                 </ng-container>
-
-                <!-- Name Column -->
                 <ng-container matColumnDef="content">
-                    <th mat-header-cell *matHeaderCellDef> Content </th>
+                    <th mat-header-cell *matHeaderCellDef>  </th>
                     <td mat-cell *matCellDef="let email"> {{email.content}} </td>
                 </ng-container>
-
-                <!-- Weight Column -->
                 <ng-container matColumnDef="date">
-                    <th mat-header-cell *matHeaderCellDef> Data </th>
+                    <th mat-header-cell *matHeaderCellDef>  </th>
                     <td mat-cell *matCellDef="let email"> {{email.date}} </td>
                 </ng-container>
-
-                <!-- Symbol Column -->
-                <!-- <ng-container matColumnDef="symbol">
-                      <th mat-header-cell *matHeaderCellDef> Symbol </th>
-                      <td mat-cell *matCellDef="let element"> {{element.symbol}} </td>
-                    </ng-container> -->
+                <ng-container matColumnDef="favorite">
+                      <th mat-header-cell *matHeaderCellDef> </th>
+                      <td mat-cell *matCellDef="let email"> 
+                          <a href="#" (click)="makeFavorite(email)">
+                          <mat-icon>  {{email.favorite ? 'star' : 'star_border'}} </mat-icon>  
+                          </a>
+                        </td>
+                    </ng-container> 
 
                 <tr mat-header-row *matHeaderRowDef="colunas"></tr>
                 <tr mat-row *matRowDef="let row; columns: colunas;"></tr>

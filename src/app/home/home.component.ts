@@ -4,6 +4,8 @@ import { UsersService } from '../users.service';
 import { EmailsService } from '../emails.service';
 import { Router } from "@angular/router";
 import { FormGroup, FormBuilder, Validators} from '@angular/forms';
+import { MatDialog, MatDialogRef} from "@angular/material/dialog";
+import { EmailComponent } from '../email/email.component';
 
 @Component({
   selector: 'app-home',
@@ -13,12 +15,16 @@ import { FormGroup, FormBuilder, Validators} from '@angular/forms';
 export class HomeComponent implements OnInit {
   emails: Email[] = [];
 
+  email!: Email;
   formularioEmail!: FormGroup;
-  colunas = ['title', 'content', 'date'];
+  colunas = ['favorite', 'title', 'content', 'date'];
   constructor(
     private service:EmailsService,
     private fb:FormBuilder,
-    private router:Router
+    private router:Router, 
+    private dialog: MatDialog,
+    public dialogRef: MatDialogRef<EmailComponent>
+ 
   ) { }
 
   ngOnInit(): void {
@@ -35,6 +41,21 @@ export class HomeComponent implements OnInit {
     })
   }
 
+  makeFavorite(email : Email){
+    this.service.makeFavorite(email).subscribe(
+      response =>{
+        email.favorite = !email.favorite;
+      }
+    )
+  }
+
+  visualizarEmail(){
+    this.dialog.open(EmailComponent,{
+      width: '500px',
+      height: '500px',
+      data: this.email
+    })
+  }
   submit(){
     const formValues = this.formularioEmail.value;
     const email: Email = new Email(formValues.content, formValues.title, formValues.idUser);
@@ -42,9 +63,15 @@ export class HomeComponent implements OnInit {
       response => {
         this.emails.push(email);
         console.log(this.emails);
-        this.router.navigate(['/home'])
+        this.fechar();
+        let list : Email[] = [...this.emails, response];
+        this.emails = list;
+        this.router.navigate(['/home']);
       }
     )
   }
 
+  fechar(){
+    this.dialogRef.close();
+  }
 }

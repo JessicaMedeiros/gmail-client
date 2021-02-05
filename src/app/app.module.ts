@@ -18,7 +18,7 @@ import {MatDividerModule} from '@angular/material/divider';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatListModule} from '@angular/material/list';
 import {MatRippleModule} from '@angular/material/core';
-import {MatDialogModule} from '@angular/material/dialog';
+import {MatDialogModule, MatDialogRef} from '@angular/material/dialog';
 import {MatTableModule} from '@angular/material/table';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -28,6 +28,7 @@ import { UserFormComponent } from './user/user-form/user-form.component';
 import { UsersService } from "./users.service";
 import { HomeComponent } from './home/home.component';
 import { EmailComponent } from './email/email.component';
+import { EmailsService } from './emails.service';
 
 @NgModule({
   declarations: [
@@ -74,7 +75,12 @@ import { EmailComponent } from './email/email.component';
     MatTableModule
   ],
   providers: [
-    UsersService
+    UsersService,
+    EmailsService,
+    {
+      provide: MatDialogRef,
+      useValue: {}
+    }
   ],
   bootstrap: [AppComponent]
 })
