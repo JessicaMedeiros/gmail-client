@@ -13,10 +13,11 @@ import {MatMenuModule} from '@angular/material/menu';
 
 import { UserRoutingModule } from './user-routing.module';
 import { UserFormComponent } from './user-form/user-form.component';
+import { CadastroComponent } from './cadastro/cadastro.component';
 
 
 @NgModule({
-  declarations: [UserFormComponent],
+  declarations: [UserFormComponent, CadastroComponent],
   imports: [
     CommonModule,
     UserRoutingModule,

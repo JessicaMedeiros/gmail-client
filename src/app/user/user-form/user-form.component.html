@@ -1,56 +1,57 @@
 <div class="wrapper">
   <div class="container">
+
     <mat-card-title>
       <img alt="xxx" class="logo" src="assets/icon.png">
     </mat-card-title>
+
     <mat-card-title>
-      <div class="signin">Sign in</div>
+      <div class="signin">
+        Sign in
+      </div>
     </mat-card-title>
+  
+
     <mat-card-title>
       <div class="useYourGoogleAccount">Use your Google Account</div>
     </mat-card-title>
 
 
-    <form [formGroup]="formulario" (ngSubmit)="submit()">
+    <form [formGroup]="formLogin" (ngSubmit)="login()">
       <mat-form-field class="box" appearance="fill">
         <mat-label>Enter your email</mat-label>
-        <input formControlName="nome" matInput placeholder="pat@example.com">
+        <input formControlName="username" matInput placeholder="pat@example.com">
         <!-- <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error> -->
       </mat-form-field>
 
       <mat-form-field class="box" appearance="fill">
         <mat-label>Enter your password</mat-label>
-        <input formControlName="senha" matInput placeholder="passwprd">
+        <input formControlName="password" matInput placeholder="passwprd">
         <!-- <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error> -->
       </mat-form-field>
       <div class="createAccountandSignInSection">
-     
+
         <button mat-button class="createAccountButton" [matMenuTriggerFor]="menu">Create account</button>
-        <mat-menu #menu="matMenu">
-          <button mat-menu-item>For myself</button>
+        
+        <mat-menu #menu="matMenu" class="menu">
+          <button mat-menu-item >For myself</button>
           <button mat-menu-item>To manage my business</button>
         </mat-menu>
-  
-        <button mat-stroked-button class="button">Next</button>
+        
+        <button mat-stroked-button (click)="login()" class="buttonLogin">Login</button>
+    
       </div>
-</form>
+    </form>
   </div>
 
   <div class="footer">
-    <!-- <mat-form-field class="select">
-      <mat-label>Choose a country</mat-label>
-      <mat-select name="countries" class="select">
-        <mat-option *ngFor="let language of languages" [value]="language.id">
-          {{language.name}}
-        </mat-option>
-      </mat-select>
-    </mat-form-field> -->
+    <a href="#" routerLink="/" class="button">Create account</a>
 
-    <div class="buttonFooterDiv"> 
+    <div class="buttonFooterDiv">
       <a mat-flat-button class="buttonFooter" href="https://www.google.com/" target="_blank">Help</a>
       <a mat-flat-button class="buttonFooter" href="https://www.google.com/" target="_blank">Privacy</a>
       <a mat-flat-button class="buttonFooter" href="https://www.google.com/" target="_blank">Terms</a>
     </div>
-
   </div>
+
 </div>

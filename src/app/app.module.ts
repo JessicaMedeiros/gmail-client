@@ -20,6 +20,7 @@ import {MatListModule} from '@angular/material/list';
 import {MatRippleModule} from '@angular/material/core';
 import {MatDialogModule, MatDialogRef} from '@angular/material/dialog';
 import {MatTableModule} from '@angular/material/table';
+import {MatToolbarModule} from '@angular/material/toolbar';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -29,11 +30,12 @@ import { UsersService } from "./users.service";
 import { HomeComponent } from './home/home.component';
 import { EmailComponent } from './email/email.component';
 import { EmailsService } from './emails.service';
+import { AuthService } from "./auth.service";
+import { CadastroComponent } from "./user/cadastro/cadastro.component";
 
 @NgModule({
   declarations: [
-    AppComponent, 
-    UserFormComponent, HomeComponent, EmailComponent
+    AppComponent, UserFormComponent, HomeComponent, EmailComponent, CadastroComponent
   ],
   imports: [
     BrowserModule,
@@ -55,7 +57,8 @@ import { EmailsService } from './emails.service';
     MatListModule,
     MatRippleModule,
     MatDialogModule,
-    MatTableModule
+    MatTableModule,
+    MatToolbarModule
   ],
    exports:[
     MatFormFieldModule,
@@ -72,11 +75,13 @@ import { EmailsService } from './emails.service';
     MatListModule,
     MatRippleModule,
     MatDialogModule,
-    MatTableModule
+    MatTableModule,
+    MatToolbarModule
   ],
   providers: [
     UsersService,
     EmailsService,
+    AuthService,
     {
       provide: MatDialogRef,
       useValue: {}
