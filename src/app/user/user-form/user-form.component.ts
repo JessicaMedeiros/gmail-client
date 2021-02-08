@@ -17,14 +17,15 @@ export class UserFormComponent implements OnInit {
 
   formLogin!: FormGroup;
   cadastrando!:boolean;
- 
+  username!:string;
 
 
   constructor(
     private service:UsersService, 
     private authservice:AuthService,
     private fb: FormBuilder,
-    private router: Router,
+    private router: Router
+
   ) {  }
 
   ngOnInit(): void {
@@ -56,15 +57,19 @@ export class UserFormComponent implements OnInit {
     this.cadastrando = false;
   }
 
+  
+
   login(){
     const formValues = this.formLogin.value;
     const user: User = new User(formValues.username, formValues.password);
+    
     this.authservice.authenticate(user)
     .subscribe(response => {
-      const headers = 
       this.authservice.successfulLogin(response.headers.get('Authorization') || '{}');
+      console.log(response);
       this.router.navigate(['/home']);
     })
+    ;
       console.log(this.formLogin);
   }
 

@@ -12,7 +12,7 @@ export class UsersService {
 
   url: string = environment.apiBaseUrl + "/users"
   constructor(
-    private http:HttpClient, 
+    private http:HttpClient
     
     ) { }
   
@@ -20,5 +20,8 @@ export class UsersService {
     return this.http.post<User>( this.url, user);
   }
 
+  findByUsername(username:string){
+    return this.http.get(`${this.url}/username?value=${username}`);
+  }
 
 }

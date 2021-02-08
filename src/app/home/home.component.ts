@@ -6,6 +6,8 @@ import { Router } from "@angular/router";
 import { FormGroup, FormBuilder, Validators} from '@angular/forms';
 import { MatDialog, MatDialogRef} from "@angular/material/dialog";
 import { EmailComponent } from '../email/email.component';
+import { StorageService } from 'src/app/storage.service';
+
 
 @Component({
   selector: 'app-home',
@@ -15,15 +17,20 @@ import { EmailComponent } from '../email/email.component';
 export class HomeComponent implements OnInit {
   emails: Email[] = [];
 
+  id!:number;
+  
+  username!:string;
   email!: Email;
   formularioEmail!: FormGroup;
-  colunas = ['favorite', 'title', 'content', 'date'];
+  colunas = ['favorite', 'title', 'cc', 'content', 'date'];
   constructor(
     private service:EmailsService,
     private fb:FormBuilder,
     private router:Router, 
     private dialog: MatDialog,
-    public dialogRef: MatDialogRef<EmailComponent>
+    public dialogRef: MatDialogRef<EmailComponent>,
+    public storage:StorageService, 
+    public userService:UsersService
  
   ) { }
 
@@ -31,14 +38,32 @@ export class HomeComponent implements OnInit {
     this.formularioEmail = this.fb.group({
       content: ['', Validators.required],
       title: ['', Validators.required],
-      idUser: ['', Validators.required]
+      idUser: ['', Validators.required],
+      cc: ['', Validators.required]
     })
     this.listarEmails();
+
+    let localUser = this.storage.getLocalUser();
+    if(localUser && localUser.username){
+      this.username = localUser.username;
+      // if(this.userService.findByUsername(localUser.username)){
+        // console.log(localUser.username);
+      // }
+      console.log(localUser.username);
+    }
+    
+    
+
   }
   listarEmails(){
     this.service.list().subscribe(response => {
       this.emails = response;
     })
+  }
+
+  
+  showName(){
+   
   }
 
   makeFavorite(email : Email){
@@ -58,7 +83,7 @@ export class HomeComponent implements OnInit {
   }
   submit(){
     const formValues = this.formularioEmail.value;
-    const email: Email = new Email(formValues.content, formValues.title, formValues.idUser);
+    const email: Email = new Email(formValues.content, formValues.title, formValues.idUser, formValues.cc);
     this.service.save(email).subscribe(
       response => {
         this.emails.push(email);

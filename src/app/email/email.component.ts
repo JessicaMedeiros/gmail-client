@@ -16,7 +16,7 @@ export class EmailComponent implements OnInit {
   emails: Email[] = [];
 
   formularioEmail!: FormGroup;
-  colunas = ['title', 'content', 'date'];
+  colunas = ['title', 'content', 'cc', 'date'];
 
   constructor(
     private service:EmailsService,
@@ -32,7 +32,8 @@ export class EmailComponent implements OnInit {
     this.formularioEmail = this.fb.group({
       content: ['', Validators.required],
       title: ['', Validators.required],
-      idUser: ['', Validators.required]
+      idUser: ['', Validators.required],
+      cc: ['', Validators.required]
     })
 
     this.listarEmails();
@@ -46,7 +47,7 @@ export class EmailComponent implements OnInit {
 
   submit(){
     const formValues = this.formularioEmail.value;
-    const email: Email = new Email(formValues.content, formValues.title, formValues.idUser);
+    const email: Email = new Email(formValues.content, formValues.title, formValues.idUser, formValues.cc);
     this.service.save(email).subscribe(
       response => {
         this.emails.push(email);

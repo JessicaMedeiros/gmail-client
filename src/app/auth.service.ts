@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 import { User } from "./user/user";
 import { LocalUser } from "./localUser";
 import { StorageService } from "./storage.service";
-// import { JwtHelper } from 'angular2-jwt';
+import { JwtHelperService } from "@auth0/angular-jwt";
 import { environment } from "../environments/environment";
 
 @Injectable({
@@ -12,7 +12,7 @@ import { environment } from "../environments/environment";
 })
 export class AuthService {
 
-  // jwtHelper: JwtHelper = new JwtHelper();
+  jwtHelperService: JwtHelperService = new JwtHelperService();
   url:string = environment.apiBaseUrl + "/users"
   constructor(
     private http:HttpClient, 
@@ -43,8 +43,8 @@ export class AuthService {
 successfulLogin(authorizationValue : string) {
     let tok = authorizationValue.substring(7);
     let user : LocalUser = {
-        token: tok
-        // email: this.jwtHelper.decodeToken(tok).sub
+        token: tok,
+        username: this.jwtHelperService.decodeToken(tok).sub
     };
     this.storage.setLocalUser(user);
 
