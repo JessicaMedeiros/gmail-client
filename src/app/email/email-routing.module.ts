@@ -5,12 +5,8 @@ import { DetailsComponent } from './details/details.component'
 
 
 const routes: Routes = [
-  {
-    path: 'email', component: EmailComponent
-  },
-  {
-    path:'email-details', component: DetailsComponent
-  }
+  {   path: 'email', component: EmailComponent  },
+  {   path:'email-details/:id', component: DetailsComponent  }
 ];
 
 @NgModule({

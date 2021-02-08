@@ -21,6 +21,7 @@ import {MatRippleModule} from '@angular/material/core';
 import {MatDialogModule, MatDialogRef} from '@angular/material/dialog';
 import {MatTableModule} from '@angular/material/table';
 import {MatToolbarModule} from '@angular/material/toolbar';
+import { MatPaginatorModule } from "@angular/material/paginator";
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -34,10 +35,12 @@ import { AuthService } from "./auth.service";
 import { CadastroComponent } from "./user/cadastro/cadastro.component";
 // import { AuthInterceptor } from "./auth-interceptor";
 import { StorageService } from './storage.service';
+import { DetailsComponent } from './email/details/details.component';
+import { EmailHome } from './email/email-home';
 
 @NgModule({
   declarations: [
-    AppComponent, UserFormComponent, HomeComponent, EmailComponent, CadastroComponent
+    AppComponent, UserFormComponent, HomeComponent, EmailComponent, CadastroComponent, DetailsComponent
   ],
   imports: [
     BrowserModule,
@@ -60,7 +63,8 @@ import { StorageService } from './storage.service';
     MatRippleModule,
     MatDialogModule,
     MatTableModule,
-    MatToolbarModule
+    MatToolbarModule,
+    MatPaginatorModule
   ],
    exports:[
     MatFormFieldModule,
@@ -78,13 +82,16 @@ import { StorageService } from './storage.service';
     MatRippleModule,
     MatDialogModule,
     MatTableModule,
-    MatToolbarModule
+    MatToolbarModule,
+    MatPaginatorModule
   ],
   providers: [
     UsersService,
     EmailsService,
     AuthService,
     StorageService,
+    DetailsComponent,
+    EmailHome,
     {
       provide: MatDialogRef,
       useValue: {}

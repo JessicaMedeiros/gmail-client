@@ -9,6 +9,8 @@ import { MatDialog, MatDialogRef } from "@angular/material/dialog";
 import { EmailComponent } from '../email/email.component';
 import { StorageService } from 'src/app/storage.service';
 import { User } from '../user/user';
+import { PageEvent } from '@angular/material/paginator';
+
 
 
 @Component({
@@ -22,10 +24,17 @@ export class HomeComponent implements OnInit {
   id!: number;
   cc?:User;
 
+  totalElementos = 0;
+  pagina = 0;
+  tamanho = 2;
+  pageSizeOptions : number[] = [5]
+
   username!: string;
+  emailHome!: EmailHome;
   email!: Email;
   formularioEmail!: FormGroup;
   colunas = ['favorite', 'cc', 'title',  'date'];
+
   constructor(
     private service: EmailsService,
     private fb: FormBuilder,
@@ -39,7 +48,7 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
   
-    this.listarEmails();
+    this.listarEmails(this.pagina, this.tamanho);
 
     let localUser = this.storage.getLocalUser();
     if (localUser && localUser.username) {
@@ -48,19 +57,34 @@ export class HomeComponent implements OnInit {
         this.user = respose;
       });
       }
-    
 
-  }
-
-listarEmails(){
-  this.service.list().subscribe(response => {
-    this.emails = response;    
-  });
 }
 
+showEmailDetails(id:number){
+  this.router.navigate(["/email-details", "id"]);
+  console.log(id);
+  this.service.findByID(id).subscribe(
+    response => {
+      // this.email.isread = true;
+      this.emailHome = response;
+     
+    }
+  )
+  // 
+}
 
-showName(){
+listarEmails( pagina = 0, tamanho = 2 ){
+    this.service.list(pagina, tamanho).subscribe(response => {
+      this.emails = response.content;
+      this.totalElementos = response.totalElements;
+      this.pagina = response.number;
+    })
 
+}
+
+paginar(event: PageEvent){
+  this.pagina = event.pageIndex;
+  this.listarEmails(this.pagina, this.tamanho)
 }
 
 makeFavorite(email : Email){

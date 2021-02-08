@@ -53,21 +53,10 @@ export class EmailComponent implements OnInit {
       // idUser: ['', Validators.required],
       cc: ['', Validators.required]
     })
-
-    this.listarEmails();
-
    
   }
 
   
-
-
-  listarEmails(){
-    this.service.list().subscribe(response => {
-      this.emailsHome = response;
-    })
-  }
-
   submit(){
     let localUser = this.storage.getLocalUser();
     if (localUser && localUser.username) {
@@ -78,8 +67,6 @@ export class EmailComponent implements OnInit {
     }
 
    
-
-
     const formValues = this.formularioEmail.value;
 
     this.userService.findByUsername(formValues.cc)
@@ -93,6 +80,7 @@ export class EmailComponent implements OnInit {
         this.emails.push(email);
         console.log(this.emails);
         this.fechar();
+        window.location.reload();
         let list : Email[] = [...this.emails, response];
         this.emails = list;
       }

@@ -1,1 +1,87 @@
-<p>details works!</p>
+
+
+
+
+
+
+
+
+ <div class="container">
+    <button mat-icon-button aria-label="Example icon button with a menu icon">
+        <mat-icon class="options" (click)="drawer.toggle()">menu</mat-icon><img alt="xxx" src="assets/logo-gmail.png">
+    </button>
+
+    <mat-form-field class="box">
+        <mat-icon class="inputIcon" aria-hidden="false">search</mat-icon>
+        <mat-label class="input">Pesquisar e-mail</mat-label>
+        <input matInput>
+
+    </mat-form-field>
+
+</div>
+<div class="wrapper">
+
+    <mat-drawer-container class="sideBarContainer">
+        <mat-drawer #drawer [mode]="mode.value">
+
+            <button class="buttonCreate" mat-raised-button>Escrever</button>
+
+            <div class="button-menu">
+                <a mat-button class="button-row" target="_blank">
+                    <mat-icon class="icon" aria-hidden="false">inbox</mat-icon>
+                    Caixa de Entrada
+                </a>
+                <a mat-button class="button-row" target="_blank">
+                    <mat-icon class="icon" aria-hidden="false">star</mat-icon>Com estrela
+                </a>
+                <a mat-button class="button-row" target="_blank">
+                    <mat-icon class="icon" aria-hidden="false">watch_later_black</mat-icon>Adiados
+                </a>
+                <a mat-button class="button-row" target="_blank">
+                    <mat-icon class="icon" aria-hidden="false">label_important</mat-icon>Importante
+                </a>
+                <a mat-button class="button-row" target="_blank">
+                    <mat-icon class="icon" aria-hidden="false">duo</mat-icon>Chat
+                </a>
+                <a mat-button class="button-row" target="_blank">
+                    <mat-icon class="icon" aria-hidden="false">send_black</mat-icon>Enviados
+                </a>
+                <a mat-button class="button-row" target="_blank">
+                    <mat-icon class="icon" aria-hidden="false">insert_drive_file_black</mat-icon>Enviados
+                </a>
+
+            </div>
+
+        </mat-drawer>
+
+        <mat-drawer-content class="drawerContent">
+            <div class="divCheckBox">
+                <mat-checkbox class="checkbox"></mat-checkbox>
+                <div class="divSplitKeyboard">
+                    <mat-icon class="divSplit" aria-hidden="false">vertical_split_black</mat-icon>
+                    <mat-icon class="keyboard" aria-hidden="false">keyboard</mat-icon>
+                </div>
+            </div>
+
+
+
+            <mat-divider></mat-divider>
+     
+            
+          <div class="titulo"> {{ email.title }}</div>
+        <div class="username"> {{email.username}} aa</div>
+        <mat-divider></mat-divider>
+        {{email.content}}
+
+            
+
+            <mat-select #mode value="side">
+            </mat-select>
+        </mat-drawer-content>
+    </mat-drawer-container>
+
+
+    <div class="sideChat" >
+      
+    </div>
+</div> 
