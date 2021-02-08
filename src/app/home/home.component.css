@@ -232,11 +232,11 @@ table{
     hyphens: auto;
 }
 
-.mat-column-content{
+.mat-column-cc{
     word-wrap: break-word !important;
     white-space: unset !important;
     flex: 0 0 28% !important;
-    width: 80% !important;
+    width: 23% !important;
     overflow-wrap: break-word;
     word-wrap: break-word;
   
@@ -246,7 +246,8 @@ table{
     -moz-hyphens: auto;
     -webkit-hyphens: auto;
     hyphens: auto;
-  }
+}
+
 
 .mat-column-favorite{
     word-wrap: break-word !important;

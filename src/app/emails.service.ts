@@ -3,6 +3,7 @@ import { Observable } from "rxjs";
 import { environment } from "../environments/environment";
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { Email } from './email/email';
+import { EmailHome } from './email/email-home';
 
 @Injectable({
   providedIn: 'root'
@@ -18,7 +19,7 @@ export class EmailsService {
     return this.http.post<Email>(this.url, email);
   }
 
-  list(): Observable<Email[]>{
+  list(): Observable<EmailHome[]>{
     return this.http.get<any>(this.url);
   }
 

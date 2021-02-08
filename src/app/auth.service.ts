@@ -45,7 +45,9 @@ successfulLogin(authorizationValue : string) {
     let user : LocalUser = {
         token: tok,
         username: this.jwtHelperService.decodeToken(tok).sub
-    };
+       
+        
+    }; console.log(tok);
     this.storage.setLocalUser(user);
 
 }

@@ -12,7 +12,7 @@
 .box{
     display: inline-block;
     outline: none;
-    padding-bottom: 2px;
+    padding-bottom: 0px;
     width: 450px;
 }
 
@@ -26,7 +26,8 @@
 
 .example-spacer {
     flex: 1 1 auto;
-  }
+}
+
 
 
 .toobar{
@@ -43,6 +44,7 @@
 }
 
 .closeButton{
+    width: 19%;
     float: right;
     background-color:  #202124;
     color: white;

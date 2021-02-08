@@ -32,7 +32,8 @@ import { EmailComponent } from './email/email.component';
 import { EmailsService } from './emails.service';
 import { AuthService } from "./auth.service";
 import { CadastroComponent } from "./user/cadastro/cadastro.component";
-import { AuthInterceptorProvider } from "./auth-interceptor";
+// import { AuthInterceptor } from "./auth-interceptor";
+import { StorageService } from './storage.service';
 
 @NgModule({
   declarations: [
@@ -83,7 +84,7 @@ import { AuthInterceptorProvider } from "./auth-interceptor";
     UsersService,
     EmailsService,
     AuthService,
-    AuthInterceptorProvider,
+    StorageService,
     {
       provide: MatDialogRef,
       useValue: {}

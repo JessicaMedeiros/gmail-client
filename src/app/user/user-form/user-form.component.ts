@@ -66,7 +66,7 @@ export class UserFormComponent implements OnInit {
     this.authservice.authenticate(user)
     .subscribe(response => {
       this.authservice.successfulLogin(response.headers.get('Authorization') || '{}');
-      console.log(response);
+      console.log(response.headers.get('Authorization') || '{}');
       this.router.navigate(['/home']);
     })
     ;

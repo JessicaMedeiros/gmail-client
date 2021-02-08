@@ -1,4 +1,4 @@
-<h2 mat-dialog-title class="toobar">
+<h2 mat-dialog-title>
   <mat-toolbar class="toobar">
     <a style="margin-left: 14px;">Nova Mensagem</a>
     <a routerLink="/home" class="closeButton" (click)="fechar()">
@@ -10,27 +10,24 @@
 
 <form [formGroup]="formularioEmail" class="form" (ngSubmit)="submit()">
 
+  
+  <span> De: {{user.username}}</span>
+  
   <mat-form-field class="box" appearance="standard">
-    <mat-label>Titulo</mat-label>
+    <mat-label>Para:</mat-label>
+    <input formControlName="cc" matInput>
+    <span matSuffix>@gmail.com</span>
+    <mat-divider  style="width: 450px;"></mat-divider>
+  </mat-form-field>
+
+  <mat-form-field class="box" appearance="standard">
+    <mat-label>Assunto</mat-label>
     <input formControlName="title" matInput>
     <mat-divider  style="width: 450px;"></mat-divider>
   </mat-form-field>
 
-  
-  <mat-form-field class="box" appearance="standard">
-    <mat-label>CC</mat-label>
-    <input formControlName="cc" matInput>
-    <mat-divider  style="width: 450px;"></mat-divider>
-  </mat-form-field>
-
-  <mat-form-field class="box" appearance="standard">
-    <mat-label>idUser</mat-label>
-    <input formControlName="idUser" matInput>
-    <mat-divider  style="width: 450px;"></mat-divider>
-  </mat-form-field>
- 
   <mat-form-field class="boxTextArea" appearance="standard">
-    <mat-label>Content</mat-label>
+    <mat-label></mat-label>
     <textarea matInput cols="40" rows="8" formControlName="content"></textarea>
   </mat-form-field>
 
