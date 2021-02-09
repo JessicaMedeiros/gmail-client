@@ -10,6 +10,7 @@ import { EmailComponent } from '../email/email.component';
 import { StorageService } from 'src/app/storage.service';
 import { User } from '../user/user';
 import { PageEvent } from '@angular/material/paginator';
+import { AuthService } from '../auth.service'
 
 
 
@@ -42,7 +43,8 @@ export class HomeComponent implements OnInit {
     private dialog: MatDialog,
     public dialogRef: MatDialogRef<EmailComponent>,
     public storage: StorageService,
-    public userService: UsersService
+    public userService: UsersService,
+    public authService: AuthService
 
   ) { }
 
@@ -73,7 +75,7 @@ showEmailDetails(id:number){
   // 
 }
 
-listarEmails( pagina = 0, tamanho = 2 ){
+listarEmails( pagina = 0, tamanho = 10 ){
     this.service.list(pagina, tamanho).subscribe(response => {
       this.emails = response.content;
       this.totalElementos = response.totalElements;
@@ -106,5 +108,10 @@ visualizarEmail(){
 
 fechar(){
   this.dialogRef.close();
+}
+
+logout(){
+  this.authService.logout();
+  this.router.navigate(['/login']);
 }
 }

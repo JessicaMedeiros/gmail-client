@@ -1,12 +1,4 @@
-
-
-
-
-
-
-
-
- <div class="container">
+<div class="container">
     <button mat-icon-button aria-label="Example icon button with a menu icon">
         <mat-icon class="options" (click)="drawer.toggle()">menu</mat-icon><img alt="xxx" src="assets/logo-gmail.png">
     </button>
@@ -56,24 +48,21 @@
 
         <mat-drawer-content class="drawerContent">
             <div class="divCheckBox">
-                <mat-checkbox class="checkbox"></mat-checkbox>
-                <div class="divSplitKeyboard">
-                    <mat-icon class="divSplit" aria-hidden="false">vertical_split_black</mat-icon>
-                    <mat-icon class="keyboard" aria-hidden="false">keyboard</mat-icon>
-                </div>
+                <a mat-flat-button href="#" class="goHome" routerLink="/home" > <mat-icon>arrow_back</mat-icon></a> 
             </div>
 
 
 
             <mat-divider></mat-divider>
-     
-            
-          <div class="titulo"> {{ email.title }}</div>
-        <div class="username"> {{email.username}} aa</div>
-        <mat-divider></mat-divider>
-        {{email.content}}
 
-            
+            <div class="emailBody">
+                <div class="titulo"> {{ email.title }}</div>
+              
+                <div class="username"> <strong>{{email.username}}</strong>  <span><</span>{{email.username}}@gmail.com> </div>
+               
+                <div class="content"> {{email.content}}</div>
+            </div>
+
 
             <mat-select #mode value="side">
             </mat-select>
@@ -81,7 +70,7 @@
     </mat-drawer-container>
 
 
-    <div class="sideChat" >
-      
+    <div class="sideChat">
+        {{user?.username}}
     </div>
-</div> 
+</div>

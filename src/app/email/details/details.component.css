@@ -59,10 +59,6 @@
     display: none;
 }
 
-body{
-    font-family: Roboto,RobotoDraft,Helvetica,Arial,sans-serif;
-}
-
 .drawer{
     width: 244px;
     height: 100%;
@@ -79,9 +75,9 @@ body{
     content: '';
     display: block;
     height: 48px;
-    min-width: 56px;
-    
+    min-width: 56px;    
 }
+
 .buttonCreate{
     box-shadow: 0 1px 2px 0 rgb(60 64 67 / 30%), 0 1px 3px 1px rgb(60 64 67 / 15%);
     -webkit-font-smoothing: antialiased;
@@ -104,6 +100,7 @@ body{
     overflow: hidden;
     padding: 0 24px 0 0;
     text-transform: none;
+    margin-top: 15px;
 }
 
 .wrapper{
@@ -135,8 +132,9 @@ body{
 }
 
 .divCheckBox{
-    height: 46px;
-    padding-left: 10px;
+    height: 40px;
+   
+
 }
 .checkbox{
     align-items: center;
@@ -288,7 +286,7 @@ table{
     font-variant-ligatures: no-contextual;
     color: #202124;
     font-weight: 400;
- 
+    margin-top: 10px;
     display: inline;
     outline: none;
     padding-right: 10px;
@@ -302,4 +300,31 @@ table{
     color: #202124;
     line-height: 20px;
     vertical-align: top;
+    padding-top: 20px;
+}
+
+.content{
+    position: relative;
+    border-spacing: 0;
+    padding: 0;
+    border-collapse: collapse;
+    background-color: transparent;
+    color: #222;
+    min-width: 502px;
+    direction: ltr;   
+    position: relative;
+    padding-top: 20px;
+}
+
+
+.emailBody{
+    padding-left: 45px;
+    padding-top: 20px;
+    
+    
+}
+
+.goHome{
+    vertical-align: center;
+    opacity: .70;
 }

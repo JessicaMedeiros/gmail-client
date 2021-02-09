@@ -43,12 +43,12 @@ export class EmailsService {
     return this.http.get<EmailHome>(`${this.url}/${id}`, {'headers': authHeader});
   }
 
- 
-    
-
-  
-  
+   
   makeFavorite(email : Email) : Observable<any>{
-    return this.http.patch(`${this.url}/${email.id}/favorite`, null);
+
+    let token = this.storage.getLocalUser().token;
+    let authHeader = new HttpHeaders({'Authorization': 'Bearer' + token});
+
+    return this.http.patch(`${this.url}/${email.id}/favorite`, null, {'headers': authHeader});
   }
 }

@@ -11,6 +11,7 @@
     justify-content: space-between;
     min-width: -webkit-min-content;
     min-width: min-content;
+  
 }
 
 .options{
@@ -59,9 +60,6 @@
     display: none;
 }
 
-body{
-    font-family: Roboto,RobotoDraft,Helvetica,Arial,sans-serif;
-}
 
 .drawer{
     width: 244px;
@@ -104,6 +102,7 @@ body{
     overflow: hidden;
     padding: 0 24px 0 0;
     text-transform: none;
+    margin-top: 15px;
 }
 
 .wrapper{
@@ -111,6 +110,7 @@ body{
 	clear: both;
     width: 100%;
     overflow:auto;
+  
   
 }
 .sideBarContainer{
@@ -122,7 +122,7 @@ body{
 
 .drawerContent{
     background-color: white;
-
+  
 }
 
 .sideChat{

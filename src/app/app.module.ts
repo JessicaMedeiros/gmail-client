@@ -37,6 +37,7 @@ import { CadastroComponent } from "./user/cadastro/cadastro.component";
 import { StorageService } from './storage.service';
 import { DetailsComponent } from './email/details/details.component';
 import { EmailHome } from './email/email-home';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
 
 @NgModule({
   declarations: [
@@ -64,7 +65,8 @@ import { EmailHome } from './email/email-home';
     MatDialogModule,
     MatTableModule,
     MatToolbarModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    MatSnackBarModule
   ],
    exports:[
     MatFormFieldModule,
@@ -83,7 +85,8 @@ import { EmailHome } from './email/email-home';
     MatDialogModule,
     MatTableModule,
     MatToolbarModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    MatSnackBarModule
   ],
   providers: [
     UsersService,
